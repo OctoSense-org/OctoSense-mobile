@@ -7,10 +7,21 @@
 //! `cfg!(mobile_only)`, never as the feature or the target directly.
 fn main() {
     println!("cargo:rustc-check-cfg=cfg(mobile_only)");
+    println!("cargo:rustc-check-cfg=cfg(native_mobile)");
     let feature = std::env::var_os("CARGO_FEATURE_MOBILE_ONLY").is_some();
-    let android = std::env::var("CARGO_CFG_TARGET_OS").as_deref() == Ok("android");
+    let target_os = std::env::var("CARGO_CFG_TARGET_OS").unwrap_or_default();
+    let target_env = std::env::var("CARGO_CFG_TARGET_ENV").unwrap_or_default();
+    let android = target_os == "android";
+    // A phone or tablet target, whatever its OS: the bundled apps are linked
+    // in, nothing hosts child processes, the window is the whole screen.
+    // OpenHarmony is `target_os = "linux"` with `target_env = "ohos"`, so a
+    // target_os test alone would take it for a desktop.
+    let native_mobile = android || target_os == "ios" || target_env == "ohos";
     if feature || android {
         println!("cargo:rustc-cfg=mobile_only");
+    }
+    if native_mobile {
+        println!("cargo:rustc-cfg=native_mobile");
     }
     // The host's build id: the second this build was configured, as digits.
     // A hosted AppCard pins its card approvals to the runtime it admitted

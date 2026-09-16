@@ -42,13 +42,13 @@ pub fn is_linked(id: &str) -> bool {
 fn linked_modules() -> Vec<&'static dyn AppModule> {
     #[allow(unused_mut)]
     let mut out: Vec<&'static dyn AppModule> = Vec::new();
-    #[cfg(any(feature = "app-reference", target_os = "android", target_os = "ios"))]
+    #[cfg(any(feature = "app-reference", native_mobile))]
     out.push(&octosense_reference::REFERENCE_MODULE);
-    #[cfg(any(feature = "app-sheets", target_os = "android", target_os = "ios"))]
+    #[cfg(any(feature = "app-sheets", native_mobile))]
     out.push(&makepad_sheets::SHEETS_MODULE);
-    #[cfg(any(feature = "app-photos", target_os = "android", target_os = "ios"))]
+    #[cfg(any(feature = "app-photos", native_mobile))]
     out.push(&makepad_photos::PHOTOS_MODULE);
-    #[cfg(any(feature = "app-appcard", target_os = "android", target_os = "ios"))]
+    #[cfg(any(feature = "app-appcard", native_mobile))]
     out.push(&octosense_appcard::APPCARD_MODULE);
     out
 }

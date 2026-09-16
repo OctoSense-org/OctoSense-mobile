@@ -4687,8 +4687,7 @@ dependencies = [
 [[package]]
 name = "nix"
 version = "0.29.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "71e2746dc3a24dd78b3cfcb7be93368c6de9963d30f43a6a73998a9cf4b17b46"
+source = "git+https://github.com/octos-org/octos.git?rev=deb433e9a452c03d8fe7f4f6a26b42785c47ced7#deb433e9a452c03d8fe7f4f6a26b42785c47ced7"
 dependencies = [
  "bitflags 2.13.2",
  "cfg-if 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -4898,7 +4897,7 @@ dependencies = [
 [[package]]
 name = "octos-agent"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "async-trait",
  "base64 0.22.1",
@@ -4921,7 +4920,7 @@ dependencies = [
  "metrics",
  "oauth2",
  "octos-bus",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "octos-llm",
  "octos-memory",
  "octos-plugin",
@@ -4957,7 +4956,7 @@ dependencies = [
 [[package]]
 name = "octos-app"
 version = "0.1.0"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "blake3",
  "chrono",
@@ -4984,7 +4983,7 @@ dependencies = [
 [[package]]
 name = "octos-app-render"
 version = "0.1.0"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "streaming-markdown-kit",
 ]
@@ -4992,7 +4991,7 @@ dependencies = [
 [[package]]
 name = "octos-app-store"
 version = "0.1.0"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "chrono",
  "keyring",
@@ -5006,7 +5005,7 @@ dependencies = [
 [[package]]
 name = "octos-app-transport"
 version = "0.1.0"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "android_logger",
  "chrono",
@@ -5027,7 +5026,7 @@ dependencies = [
 [[package]]
 name = "octos-bus"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "aes",
  "async-trait",
@@ -5041,7 +5040,7 @@ dependencies = [
  "futures",
  "lru",
  "metrics",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "reqwest 0.12.28",
  "serde",
  "serde_json",
@@ -5056,7 +5055,7 @@ dependencies = [
 [[package]]
 name = "octos-cli"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "agent-client-protocol",
  "argon2",
@@ -5085,7 +5084,7 @@ dependencies = [
  "metrics-exporter-prometheus",
  "octos-agent",
  "octos-bus",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "octos-diagnostics",
  "octos-fleet",
  "octos-fleet-worker",
@@ -5134,7 +5133,7 @@ dependencies = [
 [[package]]
 name = "octos-core"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "chrono",
  "eyre",
@@ -5162,10 +5161,10 @@ dependencies = [
 [[package]]
 name = "octos-diagnostics"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "eyre",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "reqwest 0.12.28",
  "serde",
  "serde_json",
@@ -5174,10 +5173,10 @@ dependencies = [
 [[package]]
 name = "octos-fleet"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "eyre",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "redb",
  "rusqlite",
  "serde",
@@ -5190,12 +5189,12 @@ dependencies = [
 [[package]]
 name = "octos-fleet-worker"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "async-trait",
  "eyre",
  "octos-agent",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "octos-fleet",
  "octos-llm",
  "octos-memory",
@@ -5207,7 +5206,7 @@ dependencies = [
 [[package]]
 name = "octos-llm"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "async-trait",
  "base64 0.22.1",
@@ -5216,7 +5215,7 @@ dependencies = [
  "futures",
  "jsonwebtoken",
  "metrics",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "redb",
  "reqwest 0.12.28",
  "secrecy",
@@ -5230,13 +5229,13 @@ dependencies = [
 [[package]]
 name = "octos-memory"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "bincode",
  "chrono",
  "eyre",
  "hnsw_rs",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "redb",
  "regex",
  "serde",
@@ -5249,7 +5248,7 @@ dependencies = [
 [[package]]
 name = "octos-pipeline"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "async-trait",
  "chrono",
@@ -5257,7 +5256,7 @@ dependencies = [
  "futures",
  "glob",
  "octos-agent",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "octos-llm",
  "octos-memory",
  "octos-plugin",
@@ -5271,7 +5270,7 @@ dependencies = [
 [[package]]
 name = "octos-plugin"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "eyre",
  "metrics",
@@ -5285,7 +5284,7 @@ dependencies = [
 [[package]]
 name = "octos-services"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "chrono",
  "dirs",
@@ -5293,7 +5292,7 @@ dependencies = [
  "flate2",
  "futures",
  "octos-bus",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "octos-llm",
  "reqwest 0.12.28",
  "serde",
@@ -5306,14 +5305,14 @@ dependencies = [
 [[package]]
 name = "octos-store"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "base64 0.22.1",
  "chrono",
  "constant_time_eq 0.3.1",
  "eyre",
  "getrandom 0.2.17",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "redb",
  "serde",
  "serde_json",
@@ -5326,7 +5325,7 @@ dependencies = [
 [[package]]
 name = "octos-swarm"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "async-trait",
  "chrono",
@@ -5345,12 +5344,12 @@ dependencies = [
 [[package]]
 name = "octos-workflows"
 version = "2.0.3-rc.11"
-source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18#a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18"
+source = "git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987#3a793964f4c7c8b87e9f43d595174c98b1815987"
 dependencies = [
  "chrono",
  "eyre",
  "octos-agent",
- "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=a3d0230a0dadb2e6ae73fa8a518fb7ef6d2f7a18)",
+ "octos-core 2.0.3-rc.11 (git+https://github.com/OctoSense-org/Octoscript-AppCard.git?rev=3a793964f4c7c8b87e9f43d595174c98b1815987)",
  "octos-pipeline",
  "serde",
  "serde_json",
