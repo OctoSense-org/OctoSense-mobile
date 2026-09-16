@@ -81,10 +81,14 @@ use pane_links::{PaneCall, PaneLinks};
 use makepad_widgets::ai_slot::AiSlotRequests;
 use shell::ai_pane::ShellAiPane;
 
-app_main!(
-    App,
-    font_set: International,
-    font_assets: [
+/// The font asset list is one literal; modules linked in add their faces here.
+/// A face the package lacks draws NOTHING (measured on the phone).
+macro_rules! octosense_main {
+    ($($extra:literal),* $(,)?) => {
+        app_main!(
+            App,
+            font_set: International,
+            font_assets: [
         "makepad_widgets/resources/jetbrains_mono_variable.ttf",
         "makepad_widgets/resources/NotoColorEmoji.ttf",
         // The faces the AppCard module's L0 kit names by file
@@ -103,8 +107,39 @@ app_main!(
         "makepad_widgets/resources/Montserrat-SemiBold.ttf",
         "makepad_widgets/resources/Serif-Regular.ttf",
         "makepad_widgets/resources/Serif-Bold.ttf",
-    ]
+        $($extra),*
+            ]
+        );
+    };
+}
+// Every linked module's faces, per feature set (Android/iOS link them all).
+#[cfg(any(all(feature = "app-calendar", feature = "app-mail"), target_os = "android", target_os = "ios"))]
+octosense_main!(
+    "octosense_calendar/resources/service/NotoSansSC-Regular.ttf",
+    "octosense_calendar/resources/service/NotoSansSC-Bold.ttf",
+    "octosense_mail/resources/ux/Inter-200.ttf",
+    "octosense_mail/resources/ux/Inter-300.ttf",
+    "octosense_mail/resources/ux/Inter-400.ttf",
+    "octosense_mail/resources/ux/Inter-500.ttf",
+    "octosense_mail/resources/ux/Inter-600.ttf",
+    "octosense_mail/resources/ux/Inter-700.ttf",
 );
+#[cfg(all(feature = "app-calendar", not(feature = "app-mail"), not(any(target_os = "android", target_os = "ios"))))]
+octosense_main!(
+    "octosense_calendar/resources/service/NotoSansSC-Regular.ttf",
+    "octosense_calendar/resources/service/NotoSansSC-Bold.ttf",
+);
+#[cfg(all(feature = "app-mail", not(feature = "app-calendar"), not(any(target_os = "android", target_os = "ios"))))]
+octosense_main!(
+    "octosense_mail/resources/ux/Inter-200.ttf",
+    "octosense_mail/resources/ux/Inter-300.ttf",
+    "octosense_mail/resources/ux/Inter-400.ttf",
+    "octosense_mail/resources/ux/Inter-500.ttf",
+    "octosense_mail/resources/ux/Inter-600.ttf",
+    "octosense_mail/resources/ux/Inter-700.ttf",
+);
+#[cfg(not(any(feature = "app-calendar", feature = "app-mail", target_os = "android", target_os = "ios")))]
+octosense_main!();
 
 script_mod! {
     use mod.prelude.widgets.*
@@ -1957,7 +1992,21 @@ impl App {
     /// a tile in the layout, a local endpoint on the bus. The ordinary
     /// launch path minus everything a process needs.
     fn launch_module(&mut self, cx: &mut Cx, module: &'static dyn AppModule) {
-        let open = match module.open_schema().empty_open() {
+        let schema = module.open_schema();
+        // Calendar: the service to sync with, from the app config the launcher
+        // was started with (Android: `--es makepad.APP_CONFIG`; desktop: env).
+        let configured_open = if module.id() == "mail" {
+            std::env::var("MAKEPAD_APP_CONFIG").ok().and_then(|text| makepad_strict_json::parse(text.as_bytes()).ok())
+                .and_then(|config| config.get("mail_endpoint").and_then(|v| v.as_str()).map(str::to_owned))
+                .map(|endpoint| schema.validate(&format!("{{\"endpoint\":{}}}", makepad_strict_json::Value::Str(endpoint).to_json()), &[]))
+        } else if module.id() == "calendar" {
+            let config = std::env::var("MAKEPAD_APP_CONFIG").ok().and_then(|text| makepad_strict_json::parse(text.as_bytes()).ok());
+            let pick = |key: &str, env: &str| config.as_ref().and_then(|c| c.get(key).and_then(|v| v.as_str()).map(str::to_owned)).or_else(|| std::env::var(env).ok()).filter(|v| !v.is_empty());
+            let fields: Vec<String> = [("server", "CALENDAR_SERVER"), ("token", "CALENDAR_TOKEN"), ("device", "CALENDAR_DEVICE"), ("locale", "CALENDAR_LOCALE")].iter()
+                .filter_map(|(arg, env)| pick(&format!("calendar_{arg}"), env).map(|v| format!("{:?}:{}", arg, makepad_strict_json::Value::Str(v).to_json()))).collect();
+            if fields.is_empty() { None } else { Some(schema.validate(&format!("{{{}}}", fields.join(",")), &[])) }
+        } else { None };
+        let open = match configured_open.unwrap_or_else(|| schema.empty_open()) {
             Ok(open) => open,
             Err(e) => {
                 log!("wm: {} cannot open without arguments: {}", module.id(), e);
@@ -3669,7 +3718,18 @@ impl App {
     /// binding can be driven from a script even where the host OS keeps a
     /// chord for itself.
     fn run_test_actions(&mut self, cx: &mut Cx) {
-        let args: Vec<String> = std::env::args().collect();
+        let mut args: Vec<String> = std::env::args().collect();
+        // Android has no command line: `--es makepad.APP_CONFIG` carries
+        // `{"test_actions": [...]}` for the same startup actions.
+        if let Ok(config) = std::env::var("MAKEPAD_APP_CONFIG") {
+            if let Ok(config) = makepad_strict_json::parse(config.as_bytes()) {
+                if let Some(actions) = config.get("test_actions").and_then(|v| v.as_arr()) {
+                    for action in actions.iter().filter_map(|v| v.as_str()) {
+                        args.extend(["--test-action".into(), action.into()]);
+                    }
+                }
+            }
+        }
         let mut i = 0;
         while i < args.len() {
             if args[i] == "--test-action" {
