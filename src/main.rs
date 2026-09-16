@@ -112,12 +112,33 @@ macro_rules! octosense_main {
         );
     };
 }
-#[cfg(any(feature = "app-calendar", target_os = "android", target_os = "ios"))]
+// Every linked module's faces, per feature set (Android/iOS link them all).
+#[cfg(any(all(feature = "app-calendar", feature = "app-mail"), target_os = "android", target_os = "ios"))]
+octosense_main!(
+    "octosense_calendar/resources/service/NotoSansSC-Regular.ttf",
+    "octosense_calendar/resources/service/NotoSansSC-Bold.ttf",
+    "octosense_mail/resources/ux/Inter-200.ttf",
+    "octosense_mail/resources/ux/Inter-300.ttf",
+    "octosense_mail/resources/ux/Inter-400.ttf",
+    "octosense_mail/resources/ux/Inter-500.ttf",
+    "octosense_mail/resources/ux/Inter-600.ttf",
+    "octosense_mail/resources/ux/Inter-700.ttf",
+);
+#[cfg(all(feature = "app-calendar", not(feature = "app-mail"), not(any(target_os = "android", target_os = "ios"))))]
 octosense_main!(
     "octosense_calendar/resources/service/NotoSansSC-Regular.ttf",
     "octosense_calendar/resources/service/NotoSansSC-Bold.ttf",
 );
-#[cfg(not(any(feature = "app-calendar", target_os = "android", target_os = "ios")))]
+#[cfg(all(feature = "app-mail", not(feature = "app-calendar"), not(any(target_os = "android", target_os = "ios"))))]
+octosense_main!(
+    "octosense_mail/resources/ux/Inter-200.ttf",
+    "octosense_mail/resources/ux/Inter-300.ttf",
+    "octosense_mail/resources/ux/Inter-400.ttf",
+    "octosense_mail/resources/ux/Inter-500.ttf",
+    "octosense_mail/resources/ux/Inter-600.ttf",
+    "octosense_mail/resources/ux/Inter-700.ttf",
+);
+#[cfg(not(any(feature = "app-calendar", feature = "app-mail", target_os = "android", target_os = "ios")))]
 octosense_main!();
 
 script_mod! {
@@ -1974,7 +1995,11 @@ impl App {
         let schema = module.open_schema();
         // Calendar: the service to sync with, from the app config the launcher
         // was started with (Android: `--es makepad.APP_CONFIG`; desktop: env).
-        let configured_open = if module.id() == "calendar" {
+        let configured_open = if module.id() == "mail" {
+            std::env::var("MAKEPAD_APP_CONFIG").ok().and_then(|text| makepad_strict_json::parse(text.as_bytes()).ok())
+                .and_then(|config| config.get("mail_endpoint").and_then(|v| v.as_str()).map(str::to_owned))
+                .map(|endpoint| schema.validate(&format!("{{\"endpoint\":{}}}", makepad_strict_json::Value::Str(endpoint).to_json()), &[]))
+        } else if module.id() == "calendar" {
             let config = std::env::var("MAKEPAD_APP_CONFIG").ok().and_then(|text| makepad_strict_json::parse(text.as_bytes()).ok());
             let pick = |key: &str, env: &str| config.as_ref().and_then(|c| c.get(key).and_then(|v| v.as_str()).map(str::to_owned)).or_else(|| std::env::var(env).ok()).filter(|v| !v.is_empty());
             let fields: Vec<String> = [("server", "CALENDAR_SERVER"), ("token", "CALENDAR_TOKEN"), ("device", "CALENDAR_DEVICE"), ("locale", "CALENDAR_LOCALE")].iter()

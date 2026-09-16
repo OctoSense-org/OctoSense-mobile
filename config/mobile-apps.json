@@ -3,5 +3,6 @@
   {"id": "sheets", "label": "Sheets", "manifest": "../Cargo.toml", "package": "octosense", "bin": "sheets", "policy": "focus"},
   {"id": "photos", "label": "Photos", "manifest": "../Cargo.toml", "package": "octosense", "bin": "photos", "policy": "focus"},
   {"id": "appcard", "label": "AppCard", "manifest": "../Cargo.toml", "package": "octosense", "bin": "appcard", "policy": "focus"},
-  {"id": "calendar", "label": "Calendar", "manifest": "../Cargo.toml", "package": "octosense", "bin": "calendar", "policy": "focus"}
+  {"id": "calendar", "label": "Calendar", "manifest": "../Cargo.toml", "package": "octosense", "bin": "calendar", "policy": "focus"},
+  {"id": "mail", "label": "Mail", "manifest": "../Cargo.toml", "package": "octosense", "bin": "mail", "policy": "focus"}
 ]
