@@ -5359,14 +5359,40 @@ dependencies = [
 ]
 
 [[package]]
+name = "octoscript-makepad"
+version = "0.1.0"
+dependencies = [
+ "octoscript-render",
+ "octoscript-ui-l0",
+ "serde_json",
+]
+
+[[package]]
 name = "octoscript-node"
 version = "0.1.0"
+
+[[package]]
+name = "octoscript-render"
+version = "0.1.0"
+dependencies = [
+ "makepad-script",
+ "octoscript-node",
+ "serde_json",
+]
 
 [[package]]
 name = "octoscript-ui-l0"
 version = "0.1.0"
 dependencies = [
  "blake3",
+ "serde_json",
+]
+
+[[package]]
+name = "octoscript-widgets"
+version = "0.1.0"
+dependencies = [
+ "makepad-widgets",
  "serde_json",
 ]
 
@@ -5387,6 +5413,7 @@ dependencies = [
  "makepad-wm-api",
  "makepad-wm-theme",
  "octosense-appcard",
+ "octosense-calendar",
  "octosense-reference",
 ]
 
@@ -5398,6 +5425,22 @@ dependencies = [
  "makepad-widgets",
  "octos-app",
  "serde_json",
+]
+
+[[package]]
+name = "octosense-calendar"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "makepad-app-module",
+ "makepad-widgets",
+ "octoscript-makepad",
+ "octoscript-node",
+ "octoscript-ui-l0",
+ "octoscript-widgets",
+ "serde",
+ "serde_json",
+ "sha2 0.10.9",
 ]
 
 [[package]]
