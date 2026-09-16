@@ -3693,7 +3693,18 @@ impl App {
     /// binding can be driven from a script even where the host OS keeps a
     /// chord for itself.
     fn run_test_actions(&mut self, cx: &mut Cx) {
-        let args: Vec<String> = std::env::args().collect();
+        let mut args: Vec<String> = std::env::args().collect();
+        // Android has no command line: `--es makepad.APP_CONFIG` carries
+        // `{"test_actions": [...]}` for the same startup actions.
+        if let Ok(config) = std::env::var("MAKEPAD_APP_CONFIG") {
+            if let Ok(config) = makepad_strict_json::parse(config.as_bytes()) {
+                if let Some(actions) = config.get("test_actions").and_then(|v| v.as_arr()) {
+                    for action in actions.iter().filter_map(|v| v.as_str()) {
+                        args.extend(["--test-action".into(), action.into()]);
+                    }
+                }
+            }
+        }
         let mut i = 0;
         while i < args.len() {
             if args[i] == "--test-action" {

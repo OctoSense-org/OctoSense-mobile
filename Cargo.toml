@@ -59,7 +59,7 @@ octosense-reference = { path = "apps/reference", optional = true }
 # the AppCard port): octos-app's AppShell — routing brain, cards, kernel agent.
 octosense-appcard = { path = "apps/appcard", optional = true }
 # The Calendar app (Octoscript-AppCard apps/calendar) as an in-process module.
-octosense-calendar = { path = "../Octoscript-AppCard-calendar/apps/calendar/native", optional = true }
+octosense-calendar = { path = "../Octosense-Service-AppCards/apps/calendar/native", optional = true }
 # The assistant as a module, seated in the pane in-process: the web build's
 # only chat, a desktop option. Without the engine feature: no model runtime,
 # NoModel and the tool console (the child process keeps the real models).
@@ -70,7 +70,7 @@ makepad-aichat = { git = "https://github.com/OctoSense-org/makepad.git", rev = "
 [target.'cfg(any(target_os = "android", target_os = "ios"))'.dependencies]
 octosense-reference = { path = "apps/reference" }
 octosense-appcard = { path = "apps/appcard" }
-octosense-calendar = { path = "../Octoscript-AppCard-calendar/apps/calendar/native" }
+octosense-calendar = { path = "../Octosense-Service-AppCards/apps/calendar/native" }
 makepad-sheets = { git = "https://github.com/OctoSense-org/makepad.git", rev = "d4502ef1e4d196d2829a07aa137740cb0581e9b4", default-features = false }
 makepad-photos = { git = "https://github.com/OctoSense-org/makepad.git", rev = "d4502ef1e4d196d2829a07aa137740cb0581e9b4", default-features = false }
 
