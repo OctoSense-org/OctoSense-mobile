@@ -113,7 +113,21 @@ macro_rules! octosense_main {
     };
 }
 // Every linked module's faces, per feature set (Android/iOS link them all).
-#[cfg(any(all(feature = "app-calendar", feature = "app-mail"), target_os = "android", target_os = "ios"))]
+#[cfg(any(all(feature = "app-calendar", feature = "app-mail", feature = "app-camera"), target_os = "android", target_os = "ios"))]
+octosense_main!(
+    "octosense_calendar/resources/service/NotoSansSC-Regular.ttf",
+    "octosense_calendar/resources/service/NotoSansSC-Bold.ttf",
+    "octosense_mail/resources/ux/Inter-200.ttf",
+    "octosense_mail/resources/ux/Inter-300.ttf",
+    "octosense_mail/resources/ux/Inter-400.ttf",
+    "octosense_mail/resources/ux/Inter-500.ttf",
+    "octosense_mail/resources/ux/Inter-600.ttf",
+    "octosense_mail/resources/ux/Inter-700.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Regular.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Medium.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Bold.ttf",
+);
+#[cfg(all(feature = "app-calendar", feature = "app-mail", not(feature = "app-camera"), not(any(target_os = "android", target_os = "ios"))))]
 octosense_main!(
     "octosense_calendar/resources/service/NotoSansSC-Regular.ttf",
     "octosense_calendar/resources/service/NotoSansSC-Bold.ttf",
@@ -124,12 +138,39 @@ octosense_main!(
     "octosense_mail/resources/ux/Inter-600.ttf",
     "octosense_mail/resources/ux/Inter-700.ttf",
 );
-#[cfg(all(feature = "app-calendar", not(feature = "app-mail"), not(any(target_os = "android", target_os = "ios"))))]
+// The Camera alone (the desktop dev run for the replica): its three Noto faces.
+#[cfg(all(feature = "app-camera", not(feature = "app-calendar"), not(feature = "app-mail"), not(any(target_os = "android", target_os = "ios"))))]
+octosense_main!(
+    "octosense_camera/resources/service/NotoSansSC-Regular.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Medium.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Bold.ttf",
+);
+#[cfg(all(feature = "app-camera", feature = "app-calendar", not(feature = "app-mail"), not(any(target_os = "android", target_os = "ios"))))]
+octosense_main!(
+    "octosense_calendar/resources/service/NotoSansSC-Regular.ttf",
+    "octosense_calendar/resources/service/NotoSansSC-Bold.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Regular.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Medium.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Bold.ttf",
+);
+#[cfg(all(feature = "app-camera", feature = "app-mail", not(feature = "app-calendar"), not(any(target_os = "android", target_os = "ios"))))]
+octosense_main!(
+    "octosense_mail/resources/ux/Inter-200.ttf",
+    "octosense_mail/resources/ux/Inter-300.ttf",
+    "octosense_mail/resources/ux/Inter-400.ttf",
+    "octosense_mail/resources/ux/Inter-500.ttf",
+    "octosense_mail/resources/ux/Inter-600.ttf",
+    "octosense_mail/resources/ux/Inter-700.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Regular.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Medium.ttf",
+    "octosense_camera/resources/service/NotoSansSC-Bold.ttf",
+);
+#[cfg(all(feature = "app-calendar", not(feature = "app-mail"), not(feature = "app-camera"), not(any(target_os = "android", target_os = "ios"))))]
 octosense_main!(
     "octosense_calendar/resources/service/NotoSansSC-Regular.ttf",
     "octosense_calendar/resources/service/NotoSansSC-Bold.ttf",
 );
-#[cfg(all(feature = "app-mail", not(feature = "app-calendar"), not(any(target_os = "android", target_os = "ios"))))]
+#[cfg(all(feature = "app-mail", not(feature = "app-calendar"), not(feature = "app-camera"), not(any(target_os = "android", target_os = "ios"))))]
 octosense_main!(
     "octosense_mail/resources/ux/Inter-200.ttf",
     "octosense_mail/resources/ux/Inter-300.ttf",
@@ -138,7 +179,7 @@ octosense_main!(
     "octosense_mail/resources/ux/Inter-600.ttf",
     "octosense_mail/resources/ux/Inter-700.ttf",
 );
-#[cfg(not(any(feature = "app-calendar", feature = "app-mail", target_os = "android", target_os = "ios")))]
+#[cfg(not(any(feature = "app-calendar", feature = "app-mail", feature = "app-camera", target_os = "android", target_os = "ios")))]
 octosense_main!();
 
 script_mod! {

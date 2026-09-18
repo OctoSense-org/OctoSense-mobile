@@ -62,6 +62,8 @@ octosense-appcard = { path = "apps/appcard", optional = true }
 octosense-calendar = { path = "../Octosense-Service-AppCards/apps/calendar/native", optional = true }
 # Mail (Octoscript-AppCard apps/mail/native) as an in-process module.
 octosense-mail = { path = "../Octosense-Service-AppCards/apps/mail/native", optional = true }
+# The Camera (Octoscript-AppCard apps/camera/native): the Mate 70 Air camera replica as an in-process module.
+octosense-camera = { path = "../Octosense-Service-AppCards/apps/camera/native", optional = true }
 # The assistant as a module, seated in the pane in-process: the web build's
 # only chat, a desktop option. Without the engine feature: no model runtime,
 # NoModel and the tool console (the child process keeps the real models).
@@ -74,6 +76,7 @@ octosense-reference = { path = "apps/reference" }
 octosense-appcard = { path = "apps/appcard" }
 octosense-calendar = { path = "../Octosense-Service-AppCards/apps/calendar/native" }
 octosense-mail = { path = "../Octosense-Service-AppCards/apps/mail/native" }
+octosense-camera = { path = "../Octosense-Service-AppCards/apps/camera/native" }
 makepad-sheets = { git = "https://github.com/OctoSense-org/makepad.git", rev = "d4502ef1e4d196d2829a07aa137740cb0581e9b4", default-features = false }
 makepad-photos = { git = "https://github.com/OctoSense-org/makepad.git", rev = "d4502ef1e4d196d2829a07aa137740cb0581e9b4", default-features = false }
 
@@ -85,7 +88,7 @@ default = []
 # `target_os = "android"`); a desktop build is universal unless this is on.
 mobile-only = []
 # Also usable on desktop for testing the same embedded apps with --module.
-mobile-apps = ["app-reference", "app-sheets", "app-photos", "app-appcard", "app-calendar", "app-mail"]
+mobile-apps = ["app-reference", "app-sheets", "app-photos", "app-appcard", "app-calendar", "app-mail", "app-camera"]
 app-reference = ["dep:octosense-reference"]
 # Sheets linked in as a module (hosting is still Process unless switched).
 app-sheets = ["dep:makepad-sheets"]
@@ -97,6 +100,8 @@ app-appcard = ["dep:octosense-appcard"]
 app-calendar = ["dep:octosense-calendar"]
 # The Mail module (Gmail over POP3/IMAP/SMTP, on device) linked in.
 app-mail = ["dep:octosense-mail"]
+# The Camera module (Mate 70 Air camera replica over Makepad video input) linked in.
+app-camera = ["dep:octosense-camera"]
 # The aichat module linked in (the pane seats it in-process where there are
 # no processes, or when `aichat` is switched to module hosting).
 app-aichat = ["dep:makepad-aichat"]

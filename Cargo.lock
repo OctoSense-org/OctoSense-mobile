@@ -5537,6 +5537,7 @@ dependencies = [
  "makepad-wm-theme",
  "octosense-appcard",
  "octosense-calendar",
+ "octosense-camera",
  "octosense-mail",
  "octosense-reference",
 ]
@@ -5556,6 +5557,21 @@ name = "octosense-calendar"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "makepad-app-module",
+ "makepad-widgets",
+ "octoscript-makepad",
+ "octoscript-node",
+ "octoscript-ui-l0",
+ "octoscript-widgets",
+ "serde",
+ "serde_json",
+ "sha2 0.10.9",
+]
+
+[[package]]
+name = "octosense-camera"
+version = "0.1.0"
+dependencies = [
  "makepad-app-module",
  "makepad-widgets",
  "octoscript-makepad",
