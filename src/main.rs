@@ -2994,7 +2994,7 @@ impl App {
 
     #[cfg(not(mobile_only))]
     fn update_desk_bar_chrome(&mut self, cx: &mut Cx, geom: &WindowGeom) {
-        let native_mobile = cfg!(any(target_os = "ios", target_os = "android"));
+        let native_mobile = cfg!(any(target_os = "ios", target_os = "android", target_env = "ohos"));
         // Insets can change without changing the toolbar (rotation, system
         // navigation mode), so update them before the metrics cache check.
         if native_mobile {
@@ -4161,7 +4161,7 @@ impl MatchEvent for App {
         }
         mobile_island::install_producers();
         self.reapprove_hosted_cards(cx);
-        if cfg!(any(target_os = "ios", target_os = "android")) {
+        if cfg!(any(target_os = "ios", target_os = "android", target_env = "ohos")) {
             self.update_bar_chrome(cx, &WindowGeom {
                 safe_area_insets: cx.display_context.safe_area_insets,
                 ..Default::default()
@@ -4529,7 +4529,7 @@ impl AppMain for App {
             // The shell bar's own modules are BUTTONS, not a drag handle:
             // where it claims a point, the press reaches the widget.
             let bar = self.ui.view(cx, ids!(bar)).area();
-            if cfg!(any(target_os = "ios", target_os = "android")) || MOBILE_ONLY
+            if cfg!(any(target_os = "ios", target_os = "android", target_env = "ohos")) || MOBILE_ONLY
                 || self.phone_toolbar_hit(cx,dq.abs).is_some() || self.shell_bar_claims(cx, dq.abs) {
                 dq.response.set(WindowDragQueryResponse::Client);
             } else if bar.is_valid(cx) && bar.rect(cx).contains(dq.abs) {
