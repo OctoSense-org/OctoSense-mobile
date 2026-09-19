@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: /Users/ychen/.local/share/octosense/android-tools/sdk/build-tools/35.0.0/aidl -Iresources/android/java -p/Users/ychen/.local/share/octosense/android-tools/sdk/platforms/android-35/framework.aidl resources/android/java/dev/makepad/octosense/agent/IAgentPlatform.aidl resources/android/java/dev/makepad/octosense/agent/IAgentPlatform.java
+ * Using: ~/.local/share/octosense/android-tools/sdk/build-tools/35.0.0/aidl -Iresources/android/java -p~/.local/share/octosense/android-tools/sdk/platforms/android-35/framework.aidl resources/android/java/dev/makepad/octosense/agent/IAgentPlatform.aidl resources/android/java/dev/makepad/octosense/agent/IAgentPlatform.java
  */
 package dev.makepad.octosense.agent;
 /**
