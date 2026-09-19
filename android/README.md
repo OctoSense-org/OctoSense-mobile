@@ -28,10 +28,10 @@ distribution and does not download a wrapper. SDK auto-installation is disabled.
 Dependency locks and SHA-256 verification metadata are checked in normal builds.
 
 On the bench, the explicitly approved tools are installed under
-`/Users/ychen/.local/share/octosense/android-tools`. Run from this directory:
+`~/.local/share/octosense/android-tools`. Run from this directory:
 
 ```sh
-export OCTOSENSE_TOOLS=/Users/ychen/.local/share/octosense/android-tools
+export OCTOSENSE_TOOLS=~/.local/share/octosense/android-tools
 export JAVA_HOME="$OCTOSENSE_TOOLS/temurin-17.0.20.1/jdk-17.0.20.1+1/Contents/Home"
 export OCTOSENSE_GRADLE_HOME="$OCTOSENSE_TOOLS/gradle-8.11.1"
 export GRADLE_USER_HOME="$OCTOSENSE_TOOLS/gradle-cache"

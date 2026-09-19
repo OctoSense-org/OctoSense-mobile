@@ -4,7 +4,7 @@ Status: phone benchmarks in progress. Native parity across the shell is NOT demo
 
 ## Source and builds
 
-- Worktree: `/Users/ychen/home/OctoSense-native-perf`
+- Worktree: `~/home/OctoSense-native-perf`
 - Branch: `perf/native-frame-budget`, based on PR #28 commit `efc153cb6caf63759334a0810adbb35f3e2c376f`.
 - Framework remains pinned to makepad `73dfc62a8358c7a6cce33e50a612ced28e5c7411`.
 - `baseline-efc153c.apk`: release APK built from the unchanged base. SHA-256 `968d7c945ee8b94d7ad276a134682b272b453c31ec662aae6ea469609235d8bd`.
@@ -25,7 +25,7 @@ The procedural wallpaper renders into a reusable full-resolution texture. Naviga
 - Measurement parser checks passed: sentinel/duplicate frames, Android 15 wrappers, an interior 500 ms stall retained, idle-only samples rejected as insufficient activity.
 - Native Metal runtime: Home, shade pull, shade close, controls, and dark-mode change inspected. The cache re-recorded when appearance changed, and its pixels remained correct.
 - With `gpu.pass` tracing enabled, one shade pull had 36 main-window paints and zero wallpaper paints between input start and settle, before any screenshot request. `/g` explicitly repaints child passes and its capture timings are NOT animation frame timings.
-- Full unit suite has an unrelated catalog failure: `clock points at the wrong package` when default catalog paths resolve to the existing `/Users/ychen/home/makepad` tree. An isolated catalog pointing at the pinned fork then exposes the existing Route binary-name mismatch (`makepad-app-route` vs `route`). No catalog source or tests were changed to hide these failures.
+- Full unit suite has an unrelated catalog failure: `clock points at the wrong package` when default catalog paths resolve to the existing `~/home/makepad` tree. An isolated catalog pointing at the pinned fork then exposes the existing Route binary-name mismatch (`makepad-app-route` vs `route`). No catalog source or tests were changed to hide these failures.
 - All owned desktop test instances were closed.
 
 ## Phone status and remaining work

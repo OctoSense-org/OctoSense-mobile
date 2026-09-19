@@ -104,7 +104,7 @@ state and reports uncertainty rather than repeating the operation.
 ## Approved tool installation
 
 The user approved Gradle 8.11.1, API 35, Build Tools 35.0.0, AGP 8.9.2 and libsu
-6.0.0 under `/Users/ychen/.local/share/octosense/android-tools`, then approved
+6.0.0 under `~/.local/share/octosense/android-tools`, then approved
 Temurin JDK 17.0.20.1+1 after the old JDK's missing native libraries prevented
 Gradle from starting. No system-wide Java or SDK settings were changed.
 
@@ -669,7 +669,7 @@ native APK packaging passes, while phone transitions remain unvalidated.
 The manifest, device identity and comparison are retained under
 `quickstep-source-inspection/rom-manifest-lookup/`. The phone was unchanged.
 Installation records are under
-`/Users/ychen/.local/share/octosense/android-platform-build`.
+`~/.local/share/octosense/android-platform-build`.
 [Pinned upstream build definition](https://github.com/LineageOS/android_packages_apps_Trebuchet/blob/2bee8237d1bb4bc79c348cc7178a780e44a822a3/Android.bp).
 
 The controller's fallback path provides a concrete integration point: its native
