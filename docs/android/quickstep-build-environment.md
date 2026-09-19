@@ -76,7 +76,7 @@ have exited successfully; the remote sources and cache remain available.
 The old Mac volume and failed/stopped build evidence remain preserved.
 
 Local migration records and remote build recipes are under
-`/Users/ychen/.local/share/octosense/android-platform-build/native-host/`.
+`~/.local/share/octosense/android-platform-build/native-host/`.
 The private SSH key and OctoSense signing key remain on the Mac. Native build
 completion and APK inspection now pass. Phone deployment and transition
 validation remain separate gates; the concrete module and rollback are in the
@@ -106,7 +106,7 @@ Approved software and locations:
   case-sensitive Docker volume, `octosense-lineage22-build`. Allow up to
   400 GB initially; check available space before download. Export manifests,
   logs and APK candidates under
-  `/Users/ychen/.local/share/octosense/android-platform-build`.
+  `~/.local/share/octosense/android-platform-build`.
 
 The pinned base image passed an x86-64 userspace execution check with
 `--platform=linux/amd64` before building this Docker context:
